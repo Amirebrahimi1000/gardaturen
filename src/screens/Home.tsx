@@ -28,7 +28,7 @@ export default function Home({ go }: { go: (s: Screen) => void }) {
     home: '',
     bingo: `${bingoCells}/${totalBingo}`,
     quiz: `${quizDone}/${totalQuiz}`,
-    spill: '9 spill',
+    spill: '8 spill',
     land: `${state.countries.length}/${COUNTRIES.length}`,
     oppdrag: `${state.missions.length}/${MISSIONS.length}`,
     skilt: `${state.plates.length}/${PLATES.length}`,
@@ -56,6 +56,19 @@ export default function Home({ go }: { go: (s: Screen) => void }) {
         </div>
         <div className="progresstext">
           {pct < 100 ? `${pct}% framme – ⭐ ${stars} stjerner` : '🎉 Framme ved Gardasjøen!'}
+        </div>
+
+        <div className="visited">
+          <div className="visited-label">
+            🌍 Vi har vært i <b>{state.countries.length}</b> av {COUNTRIES.length} land
+          </div>
+          <div className="visited-flags">
+            {COUNTRIES.map((c) => (
+              <span key={c.id} className={state.countries.includes(c.id) ? '' : 'flag-dim'}>
+                {c.flag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 

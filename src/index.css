@@ -223,6 +223,37 @@ button {
   margin-top: 8px;
 }
 
+.visited {
+  margin-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 10px;
+}
+
+.visited-label {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.visited-label b {
+  color: var(--lake);
+}
+
+.visited-flags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 22px;
+}
+
+.visited-flags .flag-dim {
+  filter: grayscale(1);
+  opacity: 0.3;
+}
+
 /* ---- Bingo --------------------------------------------------------------- */
 .bingo-grid {
   display: grid;

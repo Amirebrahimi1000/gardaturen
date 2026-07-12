@@ -4,6 +4,7 @@ import { useStore } from '../store'
 import { CountryMap } from '../components/CountryMap'
 import { CountrySilhouette } from '../components/CountrySilhouette'
 import { detectCountry } from '../data/countryBounds'
+import { celebrate } from '../lib/celebrate'
 
 // A little decorative emoji "postcard" per country.
 const SCENES: Record<string, string[]> = {
@@ -40,6 +41,7 @@ export default function Countries() {
           unlockCountry(country.id)
           unlockAchievement(`gps-${country.id}`) // one-time bonus for a real check-in
           setOpenId(country.id)
+          celebrate() // sound + vibration
           setGpsMsg(`🎉 Dere er i ${country.name}! Landet er låst opp – bonusstjerner! ⭐`)
         } else {
           setGpsMsg(

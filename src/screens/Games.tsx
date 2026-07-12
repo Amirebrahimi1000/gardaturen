@@ -3,7 +3,6 @@ import type { ComponentType } from 'react'
 import Flags from './Flags'
 import Memory from './Memory'
 import Reaction from './Reaction'
-import RockPaperScissors from './RockPaperScissors'
 import DistanceGuess from './DistanceGuess'
 import PlateMath from './PlateMath'
 import Anagram from './Anagram'
@@ -23,7 +22,6 @@ const GAMES: Game[] = [
   { id: 'flagg', emoji: '🚩', name: 'Gjett landet', desc: 'Kjenn igjen flaggene fra Europa', two: true, C: Flags },
   { id: 'husk', emoji: '🧠', name: 'Husk-spillet', desc: 'Finn parene – memory med reise-symboler', two: true, C: Memory },
   { id: 'reaksjon', emoji: '⚡', name: 'Reaksjonstest', desc: 'Trykk når skjermen blir grønn', two: true, C: Reaction },
-  { id: 'saks', emoji: '✊', name: 'Stein-saks-papir', desc: 'Mot appen eller mot hverandre', two: true, C: RockPaperScissors },
   { id: 'avstand', emoji: '📏', name: 'Gjett avstanden', desc: 'Hvem gjetter nærmest?', two: true, C: DistanceGuess },
   { id: 'skiltmatte', emoji: '🔢', name: 'Skilt-matte', desc: 'Regn ut tallene på skiltet', two: true, C: PlateMath },
   { id: 'anagram', emoji: '🔀', name: 'Vri på ordet', desc: 'Stokk bokstavene til et ord', two: true, C: Anagram },
