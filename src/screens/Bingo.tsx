@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { BINGO_CARDS } from '../data/bingo'
 import { useStore } from '../store'
 
-const FREE = 'FREE' as const
-
 export default function Bingo() {
   const { state, toggleBingo } = useStore()
   const [cardId, setCardId] = useState(BINGO_CARDS[0].id)
@@ -12,8 +10,6 @@ export default function Bingo() {
 
   const cells = card.items.map(([icon, label], i) => ({ id: `${card.id}-${i}`, icon, label }))
   const allDone = cells.every((c) => marked.has(c.id))
-  // 5x5 grid with a free ⭐ centre at position 12.
-  const grid = [...cells.slice(0, 12), FREE, ...cells.slice(12)]
 
   return (
     <>
@@ -37,23 +33,14 @@ export default function Bingo() {
 
       <div className="card">
         <p className="subtle" style={{ marginTop: 0 }}>
-          Trykk på en rute når du ser den ute av vinduet. Midten er gratis! Klarer du hele
-          brettet? ⭐
+          Trykk på en rute når du ser den ute av vinduet. Klarer du hele brettet? ⭐
         </p>
-        <div className="bingo-grid bingo-5x5">
-          {grid.map((cell, i) => {
-            if (cell === FREE) {
-              return (
-                <div key="free" className="bingo-cell free marked">
-                  <span className="bemoji">⭐</span>
-                  <span className="blabel">Gratis</span>
-                </div>
-              )
-            }
+        <div className="bingo-grid bingo-4x4">
+          {cells.map((cell) => {
             const on = marked.has(cell.id)
             return (
               <button
-                key={cell.id + i}
+                key={cell.id}
                 className={`bingo-cell ${on ? 'marked' : ''}`}
                 onClick={() => toggleBingo(cardId, cell.id)}
               >

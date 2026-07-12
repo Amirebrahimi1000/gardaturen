@@ -261,39 +261,30 @@ button {
   gap: 10px;
 }
 
-.bingo-grid.bingo-5x5 {
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
+.bingo-grid.bingo-4x4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
 }
 
-.bingo-5x5 .bingo-cell {
-  border-radius: 12px;
-  padding: 3px;
-  gap: 2px;
+.bingo-4x4 .bingo-cell {
+  border-radius: 14px;
+  padding: 5px;
+  gap: 3px;
 }
 
-.bingo-5x5 .bemoji {
-  font-size: 22px;
+.bingo-4x4 .bemoji {
+  font-size: 28px;
 }
 
-.bingo-5x5 .blabel {
-  font-size: 8px;
-  line-height: 1.05;
+.bingo-4x4 .blabel {
+  font-size: 10px;
+  line-height: 1.1;
 }
 
-.bingo-5x5 .check {
-  top: 2px;
-  right: 3px;
-  font-size: 11px;
-}
-
-.bingo-cell.free {
-  background: linear-gradient(160deg, var(--sun), var(--gold));
-  color: #7c2d12;
-}
-
-.bingo-cell.free .blabel {
-  color: #7c2d12;
+.bingo-4x4 .check {
+  top: 3px;
+  right: 4px;
+  font-size: 13px;
 }
 
 .bingo-cell {

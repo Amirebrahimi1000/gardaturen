@@ -2,11 +2,9 @@ export interface BingoCard {
   id: string
   title: string
   flag: string
-  items: [string, string][] // [icon, label] — 24 items, rendered as 5x5 with a free centre
+  items: [string, string][] // [icon, label] — 16 items, rendered as a 4x4 board
 }
 
-// Each card has 24 spottable things; the board shows them as a 5x5 grid with a
-// free ⭐ centre square.
 export const BINGO_CARDS: BingoCard[] = [
   {
     id: 'norge',
@@ -15,10 +13,8 @@ export const BINGO_CARDS: BingoCard[] = [
     items: [
       ['🫎', 'Elg-skilt'], ['🕳️', 'Tunnel'], ['💦', 'Foss eller elv'], ['🚐', 'Bobil'],
       ['🐑', 'Sau'], ['⛴️', 'Ferje'], ['🏔️', 'Fjell med snø'], ['🇳🇴', 'Norsk flagg'],
-      ['🅿️', 'Bomstasjon'], ['🐄', 'Ku'], ['🌲', 'Granskog'], ['🏞️', 'Innsjø eller fjord'],
-      ['🚗', 'Rød bil'], ['🚛', 'Lastebil'], ['⛽', 'Bensinstasjon'], ['🔌', 'Ladestasjon'],
-      ['🚜', 'Traktor'], ['🏠', 'Rødt hus'], ['🚲', 'Syklist'], ['🐎', 'Hest'],
-      ['🌉', 'Bro'], ['☀️', 'Solskinn'], ['🐦', 'Stor fugl'], ['🚌', 'Buss'],
+      ['🅿️', 'Bomstasjon'], ['🐄', 'Ku'], ['🌲', 'Granskog'], ['🏞️', 'Innsjø/fjord'],
+      ['🚗', 'Rød bil'], ['🚛', 'Lastebil'], ['⛽', 'Bensinstasjon'], ['🌉', 'Bro'],
     ],
   },
   {
@@ -28,10 +24,8 @@ export const BINGO_CARDS: BingoCard[] = [
     items: [
       ['🌬️', 'Vindmølle'], ['🟩', 'Flatt landskap'], ['🌉', 'Lang bro'], ['🐷', 'Grisefarm'],
       ['🌾', 'Kornåker'], ['🚗', 'Bil med DK-skilt'], ['🇩🇰', 'Dansk flagg'], ['🚲', 'Syklist'],
-      ['🛒', 'Netto/Rema-butikk'], ['🌭', 'Pølsevogn'], ['🏰', 'Slott'], ['⛴️', 'Ferje'],
-      ['🐄', 'Ku'], ['🚛', 'Lastebil'], ['⛽', 'Bensinstasjon'], ['🏠', 'Bondegård'],
-      ['🌊', 'Havet'], ['🚌', 'Buss'], ['🐦', 'Måke'], ['☀️', 'Sol'],
-      ['🌧️', 'Regn'], ['🚜', 'Traktor'], ['🧱', 'Lego-skilt'], ['🚙', 'Blå bil'],
+      ['🛒', 'Netto/Rema'], ['🌭', 'Pølsevogn'], ['🏰', 'Slott'], ['⛴️', 'Ferje'],
+      ['🐄', 'Ku'], ['🌊', 'Havet'], ['🧱', 'Lego-skilt'], ['🚙', 'Blå bil'],
     ],
   },
   {
@@ -40,11 +34,9 @@ export const BINGO_CARDS: BingoCard[] = [
     flag: '🇩🇪',
     items: [
       ['🛣️', 'Autobahn-skilt'], ['🚛', 'Stor lastebil'], ['🌬️', 'Vindmøllepark'], ['🏰', 'Borg/slott'],
-      ['🚙', 'BMW/Audi/Mercedes'], ['🚏', '«Ausfahrt»-skilt'], ['🅿️', 'Rasteplass'], ['🏍️', 'Motorsykkel'],
-      ['☀️', 'Solcellepanel'], ['🍺', 'Ølhage-skilt'], ['🥨', 'Bakeri/pretzel'], ['🚗', 'Veldig rask bil'],
-      ['🌉', 'Bro'], ['🕳️', 'Tunnel'], ['⛪', 'Kirketårn'], ['🚗', 'Rød bil'],
-      ['🌲', 'Skog'], ['🐄', 'Ku'], ['🚌', 'Buss'], ['🚜', 'Traktor'],
-      ['⛽', 'Bensinstasjon'], ['🌧️', 'Regn'], ['🚄', 'Tog'], ['🏭', 'Fabrikk'],
+      ['🚙', 'BMW/Audi/Merc.'], ['🚏', '«Ausfahrt»-skilt'], ['🅿️', 'Rasteplass'], ['🏍️', 'Motorsykkel'],
+      ['☀️', 'Solcellepanel'], ['🥨', 'Bakeri/pretzel'], ['🌉', 'Bro'], ['🕳️', 'Tunnel'],
+      ['⛪', 'Kirketårn'], ['🌲', 'Skog'], ['🚄', 'Tog'], ['🏭', 'Fabrikk'],
     ],
   },
   {
@@ -52,12 +44,10 @@ export const BINGO_CARDS: BingoCard[] = [
     title: 'Alpe-bingo (Sveits)',
     flag: '🇨🇭',
     items: [
-      ['🏔️', 'Snøtopp'], ['🐄', 'Ku med bjelle'], ['🕳️', 'Veldig lang tunnel'], ['🌉', 'Bro over en dal'],
-      ['🏞️', 'Blå fjellsjø'], ['🏡', 'Trehytte (chalet)'], ['🚂', 'Tog i fjellet'], ['🇨🇭', 'Sveitsisk flagg'],
-      ['💦', 'Foss ned et fjell'], ['🧀', 'Ost-skilt'], ['🍫', 'Sjokolade-skilt'], ['⛰️', 'Bratt fjellvei'],
-      ['🚡', 'Taubane'], ['🐐', 'Geit'], ['🌲', 'Barskog'], ['❄️', 'Snø ved veien'],
-      ['🚗', 'Bil med CH-skilt'], ['🚴', 'Syklist i motbakke'], ['🏂', 'Skisted-skilt'], ['🌸', 'Blomstereng'],
-      ['🛣️', 'Vignett-skilt'], ['☀️', 'Sol over fjell'], ['🅿️', 'Utsiktsplass'], ['🚌', 'Turbuss'],
+      ['🏔️', 'Snøtopp'], ['🐄', 'Ku med bjelle'], ['🕳️', 'Lang tunnel'], ['🌉', 'Bro over en dal'],
+      ['🏞️', 'Blå fjellsjø'], ['🏡', 'Trehytte'], ['🚂', 'Tog i fjellet'], ['🇨🇭', 'Sveitsisk flagg'],
+      ['💦', 'Foss ned et fjell'], ['🧀', 'Ost-skilt'], ['🍫', 'Sjokolade-skilt'], ['🚡', 'Taubane'],
+      ['🐐', 'Geit'], ['❄️', 'Snø ved veien'], ['🚗', 'Bil med CH-skilt'], ['🌸', 'Blomstereng'],
     ],
   },
   {
@@ -65,12 +55,10 @@ export const BINGO_CARDS: BingoCard[] = [
     title: 'Italia-bingo',
     flag: '🇮🇹',
     items: [
-      ['🌲', 'Sypress-tre'], ['🍇', 'Vinmark'], ['🇮🇹', 'Italiensk flagg'], ['🛵', 'Vespa-scooter'],
+      ['🌲', 'Sypress-tre'], ['🍇', 'Vinmark'], ['🇮🇹', 'Italiensk flagg'], ['🛵', 'Vespa'],
       ['🫒', 'Olivenlund'], ['🍕', 'Pizza-skilt'], ['🌴', 'Palme'], ['🏖️', 'GARDASJØEN!'],
       ['🍨', 'Gelato-sjappe'], ['⛪', 'Gammel kirke'], ['🏛️', 'Gamle ruiner'], ['🍋', 'Sitrontre'],
-      ['🚗', 'Bil med I-skilt'], ['🏔️', 'Alpene i sør'], ['🌅', 'Solnedgang'], ['🚤', 'Båt på sjøen'],
-      ['🏰', 'Borg på en høyde'], ['🛥️', 'Ferje på Gardasjøen'], ['🚙', 'Liten italiensk bil'], ['🌻', 'Solsikkeåker'],
-      ['🍝', 'Restaurant-skilt'], ['🚌', 'Turbuss'], ['🅿️', 'Autogrill (rasteplass)'], ['🐝', 'Bie i blomster'],
+      ['🚗', 'Bil med I-skilt'], ['🌅', 'Solnedgang'], ['🏰', 'Borg på en høyde'], ['🌻', 'Solsikkeåker'],
     ],
   },
   {
@@ -78,12 +66,10 @@ export const BINGO_CARDS: BingoCard[] = [
     title: 'Kjøretøy-bingo',
     flag: '🚙',
     items: [
-      ['🏍️', 'Motorsykkel'], ['🚌', 'Buss'], ['🚛', 'Lastebil med henger'], ['🚜', 'Traktor'],
+      ['🏍️', 'Motorsykkel'], ['🚌', 'Buss'], ['🚛', 'Lastebil m/henger'], ['🚜', 'Traktor'],
       ['🚓', 'Politibil'], ['🏎️', 'Sportsbil'], ['🚕', 'Taxi'], ['🚑', 'Ambulanse'],
-      ['🚐', 'Campingbil'], ['🚗', 'Rød bil'], ['🚙', 'Svart SUV'], ['🛵', 'Scooter'],
-      ['🚚', 'Varebil'], ['🚒', 'Brannbil'], ['🚲', 'Syklist'], ['🛻', 'Pickup'],
-      ['🔌', 'Elbil som lader'], ['🚗', 'Cabriolet'], ['🚗', 'Veteranbil'], ['🚗', 'Gul bil'],
-      ['🚗', 'Bil med tilhenger'], ['🚌', 'Dobbeltdekkerbuss'], ['🚲', 'Bil med sykler på taket'], ['🌍', 'Utenlandsk skilt'],
+      ['🚐', 'Campingbil'], ['🚗', 'Rød bil'], ['🛵', 'Scooter'], ['🚚', 'Varebil'],
+      ['🚒', 'Brannbil'], ['🔌', 'Elbil som lader'], ['🚲', 'Sykler på taket'], ['🌍', 'Utenlandsk skilt'],
     ],
   },
   {
@@ -92,11 +78,9 @@ export const BINGO_CARDS: BingoCard[] = [
     flag: '🅿️',
     items: [
       ['⛽', 'Bensinpumpe'], ['🔌', 'Ladestasjon'], ['🚻', 'Toalett-skilt'], ['☕', 'Noen med kaffe'],
-      ['🍦', 'Noen spiser is'], ['🐕', 'Hund som luftes'], ['🗺️', 'Info-skilt/kart'], ['🧺', 'Bord å sitte ved'],
-      ['🙆', 'Noen strekker på beina'], ['🚗', 'Mange parkerte biler'], ['🚛', 'Lastebil på pause'], ['🌳', 'Tre med skygge'],
-      ['🗑️', 'Søppelkasse'], ['🥪', 'Noen spiser matpakke'], ['🚏', 'Buss-stopp'], ['💧', 'Vann-tappested'],
-      ['🚐', 'Bobil parkert'], ['🧸', 'Barn som leker'], ['🚲', 'Sykkelstativ'], ['📸', 'Noen tar bilde'],
-      ['🏪', 'Liten kiosk'], ['👨‍👩‍👧', 'En annen familie'], ['🅿️', 'Stort P-skilt'], ['🦮', 'Kjæledyr på tur'],
+      ['🍦', 'Noen spiser is'], ['🐕', 'Hund som luftes'], ['🗺️', 'Info-kart'], ['🧺', 'Bord å sitte ved'],
+      ['🙆', 'Noen strekker beina'], ['🚗', 'Mange parkerte biler'], ['🚛', 'Lastebil på pause'], ['🗑️', 'Søppelkasse'],
+      ['🚏', 'Buss-stopp'], ['🚐', 'Bobil parkert'], ['📸', 'Noen tar bilde'], ['🅿️', 'Stort P-skilt'],
     ],
   },
   {
@@ -106,10 +90,8 @@ export const BINGO_CARDS: BingoCard[] = [
     items: [
       ['☀️', 'Strålende sol'], ['🌧️', 'Regn på ruta'], ['☁️', 'Store skyer'], ['🌈', 'Regnbue'],
       ['⚡', 'Lyn eller torden'], ['🌫️', 'Tåke'], ['🟦', 'Blå himmel'], ['🌬️', 'Trær som blåser'],
-      ['🌡️', 'Over 25 °C'], ['❄️', 'Snø i fjellet'], ['🌥️', 'Delvis skyet'], ['💨', 'Kraftig vindkast'],
-      ['🌆', 'Solnedgang'], ['🌙', 'Måne på himmelen'], ['⭐', 'Første stjerne'], ['🌦️', 'Sol og regn samtidig'],
-      ['🥵', 'Veldig varmt i bilen'], ['🧊', 'Under 10 °C'], ['🌤️', 'Sol bak en sky'], ['🌧️', 'Vått på veien'],
-      ['🏙️', 'Dis over dalen'], ['🌞', 'Sol i øynene'], ['☔', 'Noen med paraply'], ['🌪️', 'Vind-varsel-skilt'],
+      ['🌡️', 'Over 25 °C'], ['❄️', 'Snø i fjellet'], ['🌥️', 'Delvis skyet'], ['🌆', 'Solnedgang'],
+      ['🌙', 'Måne på himmelen'], ['⭐', 'Første stjerne'], ['🌦️', 'Sol og regn'], ['☔', 'Noen med paraply'],
     ],
   },
   {
@@ -118,11 +100,9 @@ export const BINGO_CARDS: BingoCard[] = [
     flag: '🏙️',
     items: [
       ['⛪', 'Kirke'], ['🏢', 'Høyt bygg'], ['🗽', 'Statue'], ['⛲', 'Fontene'],
-      ['🚊', 'Trikk eller t-bane'], ['☕', 'Uteservering'], ['🛍️', 'Travel handlegate'], ['🏛️', 'Stort torg'],
+      ['🚊', 'Trikk/t-bane'], ['☕', 'Uteservering'], ['🛍️', 'Handlegate'], ['🏛️', 'Stort torg'],
       ['📷', 'Turist med kamera'], ['🚦', 'Trafikklys'], ['🚕', 'Taxi'], ['🚏', 'Busstopp'],
-      ['🚲', 'Bysykkel'], ['🌉', 'Bybro'], ['🏨', 'Hotell-skilt'], ['🏪', 'Kiosk'],
-      ['🚧', 'Veiarbeid'], ['🅿️', 'Parkeringshus'], ['🧑‍🤝‍🧑', 'Folkemengde'], ['🐕', 'Hund i byen'],
-      ['🕰️', 'Klokketårn'], ['🎡', 'Pariserhjul'], ['🏬', 'Kjøpesenter'], ['🚉', 'Togstasjon'],
+      ['🌉', 'Bybro'], ['🕰️', 'Klokketårn'], ['🎡', 'Pariserhjul'], ['🚉', 'Togstasjon'],
     ],
   },
   {
@@ -131,11 +111,9 @@ export const BINGO_CARDS: BingoCard[] = [
     flag: '🌳',
     items: [
       ['🏞️', 'Innsjø'], ['🌳', 'Tett skog'], ['🌼', 'Blomstereng'], ['💦', 'Foss'],
-      ['🐦', 'Stor fugl'], ['🐴', 'Hest'], ['🌅', 'Soloppgang/solnedgang'], ['🌙', 'Måne på dagtid'],
-      ['⭐', 'Stjerner om kvelden'], ['🦌', 'Rådyr eller hjort'], ['🐄', 'Ku på beite'], ['🐑', 'Sau i flokk'],
-      ['🌲', 'Granskog'], ['🍄', 'Sopp ved veien'], ['🦋', 'Sommerfugl'], ['🐝', 'Bie'],
-      ['🏔️', 'Fjelltopp'], ['🌊', 'Elv med stryk'], ['🪨', 'Stor fjellvegg'], ['🌾', 'Åker'],
-      ['🐇', 'Hare eller kanin'], ['🌸', 'Blomstrende tre'], ['🦆', 'Ender i vann'], ['🌻', 'Solsikker'],
+      ['🐦', 'Stor fugl'], ['🐴', 'Hest'], ['🌅', 'Sol opp/ned'], ['🦌', 'Rådyr/hjort'],
+      ['🐄', 'Ku på beite'], ['🐑', 'Sau i flokk'], ['🌲', 'Granskog'], ['🦋', 'Sommerfugl'],
+      ['🏔️', 'Fjelltopp'], ['🌊', 'Elv med stryk'], ['🐇', 'Hare/kanin'], ['🦆', 'Ender i vann'],
     ],
   },
 ]
