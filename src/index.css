@@ -261,8 +261,44 @@ button {
   gap: 10px;
 }
 
+.bingo-grid.bingo-5x5 {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.bingo-5x5 .bingo-cell {
+  border-radius: 12px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.bingo-5x5 .bemoji {
+  font-size: 22px;
+}
+
+.bingo-5x5 .blabel {
+  font-size: 8px;
+  line-height: 1.05;
+}
+
+.bingo-5x5 .check {
+  top: 2px;
+  right: 3px;
+  font-size: 11px;
+}
+
+.bingo-cell.free {
+  background: linear-gradient(160deg, var(--sun), var(--gold));
+  color: #7c2d12;
+}
+
+.bingo-cell.free .blabel {
+  color: #7c2d12;
+}
+
 .bingo-cell {
   aspect-ratio: 1;
+  min-width: 0;
   background: #f1f5f9;
   border-radius: 16px;
   display: flex;
@@ -274,6 +310,10 @@ button {
   text-align: center;
   transition: transform 0.08s ease;
   position: relative;
+}
+
+.bingo-cell .blabel {
+  overflow-wrap: anywhere;
 }
 
 .bingo-cell:active {

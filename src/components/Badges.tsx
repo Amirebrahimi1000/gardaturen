@@ -6,7 +6,7 @@ import { PLATES } from '../data/plates'
 export function Badges() {
   const { state, stars } = useStore()
   const quizCorrect = Object.values(state.quiz).filter(Boolean).length
-  const allBingo = BINGO_CARDS.every((c) => (state.bingo[c.id]?.length ?? 0) === c.cells.length)
+  const allBingo = BINGO_CARDS.every((c) => (state.bingo[c.id]?.length ?? 0) === c.items.length)
   const routePlates = PLATES.filter((p) => p.onRoute)
   const gotRoutePlates = routePlates.every((p) => state.plates.includes(p.code))
 

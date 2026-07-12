@@ -29,12 +29,36 @@ function Shell() {
   const { state, stars, setName } = useStore()
   const [screen, setScreen] = useState<Screen>('home')
   const [nameDraft, setNameDraft] = useState('')
-  const [dark, setDark] = useState(() => localStorage.getItem(THEME_KEY) === 'dark')
+  // Default follows the phone's setting; once the user toggles, we remember it.
+  const [dark, setDark] = useState<boolean>(() => {
+    const stored = localStorage.getItem(THEME_KEY)
+    if (stored === 'dark') return true
+    if (stored === 'light') return false
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
+  })
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light'
-    localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light')
   }, [dark])
+
+  // Follow live system changes until the user makes an explicit choice.
+  useEffect(() => {
+    const mq = window.matchMedia?.('(prefers-color-scheme: dark)')
+    if (!mq) return
+    const onChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem(THEME_KEY)) setDark(e.matches)
+    }
+    mq.addEventListener?.('change', onChange)
+    return () => mq.removeEventListener?.('change', onChange)
+  }, [])
+
+  const toggleTheme = () => {
+    setDark((d) => {
+      const next = !d
+      localStorage.setItem(THEME_KEY, next ? 'dark' : 'light') // explicit choice
+      return next
+    })
+  }
 
   // First run: ask for the player's name.
   if (!state.playerName) {
@@ -73,7 +97,7 @@ function Shell() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button
             className="theme-toggle"
-            onClick={() => setDark((d) => !d)}
+            onClick={toggleTheme}
             aria-label={dark ? 'Bytt til dagmodus' : 'Bytt til kveldsmodus'}
           >
             {dark ? '☀️' : '🌙'}

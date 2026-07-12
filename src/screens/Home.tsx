@@ -49,7 +49,7 @@ export default function Home({ go }: { go: (s: Screen) => void }) {
   }
 
   const bingoCells = Object.values(state.bingo).reduce((n, a) => n + a.length, 0)
-  const totalBingo = BINGO_CARDS.reduce((n, c) => n + c.cells.length, 0)
+  const totalBingo = BINGO_CARDS.reduce((n, c) => n + c.items.length, 0)
   const quizDone = Object.values(state.quiz).filter(Boolean).length
   const totalQuiz = QUIZ.reduce((n, c) => n + c.questions.length, 0)
 
