@@ -6,6 +6,10 @@ laget spesielt for en nysgjerrig 10-åring (og resten av familien).
 Appen fungerer 100 % offline i bilen når den først er lastet inn, og er en
 installerbar PWA (kan legges til på hjemskjermen på telefon/nettbrett).
 
+> 🌍 **Live:** https://amirebrahimi1000.github.io/gardaturen/
+> Åpne lenka på nettbrettet/telefonen mens dere har nett, og velg
+> «Legg til på hjemskjerm» – da er den klar for offline-bruk i bilen.
+
 ## Hva er med?
 
 | Aktivitet | Beskrivelse |
