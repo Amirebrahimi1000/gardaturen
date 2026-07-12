@@ -4,6 +4,7 @@ export interface Question {
   options: string[]
   answer: number // index into options
   fact: string // fun fact shown after answering
+  countryIds?: string[] // question about specific country/countries; hidden if not on the trip
 }
 
 export interface QuizCategory {
@@ -20,6 +21,20 @@ export function tripCategories(countryIds: string[]): QuizCategory[] {
   return QUIZ.filter(
     (c) => !c.countryIds || c.countryIds.some((id) => countryIds.includes(id)),
   )
+}
+
+// Categories for the trip, with each category's questions also filtered so only
+// questions about the trip's countries (or country-agnostic ones) remain. Empty
+// categories are dropped.
+export function tripQuiz(countryIds: string[]): QuizCategory[] {
+  return tripCategories(countryIds)
+    .map((c) => ({
+      ...c,
+      questions: c.questions.filter(
+        (q) => !q.countryIds || q.countryIds.some((id) => countryIds.includes(id)),
+      ),
+    }))
+    .filter((c) => c.questions.length > 0)
 }
 
 export const QUIZ: QuizCategory[] = [
@@ -763,6 +778,7 @@ export const QUIZ: QuizCategory[] = [
     questions: [
       {
         id: 'na1',
+        countryIds: ['no', 'se', 'fi'],
         q: 'Hvilket stort dyr advarer elg-skiltene langs norske veier om?',
         options: ['Elg', 'Løve', 'Kenguru', 'Pingvin'],
         answer: 0,
@@ -770,6 +786,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'na2',
+        countryIds: ['it'],
         q: 'Hva kalles de høye, smale trærne som pryder mange italienske landskap?',
         options: ['Sypress', 'Palme', 'Bjørk', 'Kaktus'],
         answer: 0,
@@ -777,6 +794,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'na3',
+        countryIds: ['ch', 'at', 'it', 'li'],
         q: 'Hvilket dyr med bjelle rundt halsen kan du se i Alpene?',
         options: ['Ku', 'Sjiraff', 'Sel', 'Struts'],
         answer: 0,
@@ -791,6 +809,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'na5',
+        countryIds: ['dk', 'nl'],
         q: 'Hva lager de høye, snurrende tårnene på jordene i Danmark strøm av?',
         options: ['Vind', 'Kull', 'Olje', 'Sollys om natten'],
         answer: 0,
@@ -798,6 +817,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'na6',
+        countryIds: ['ch', 'at', 'it', 'li'],
         q: 'Hva er spesielt med toppene i Alpene, selv om sommeren?',
         options: ['De har ofte snø', 'De er dekket av sand', 'De er under vann', 'De lyser rødt'],
         answer: 0,
@@ -819,6 +839,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'na9',
+        countryIds: ['no', 'ch', 'at', 'li'],
         q: 'Hva kalles vann som stuper ned et fjell?',
         options: ['Foss', 'Innsjø', 'Bre', 'Sump'],
         answer: 0,
@@ -840,6 +861,7 @@ export const QUIZ: QuizCategory[] = [
     questions: [
       {
         id: 'ma1',
+        countryIds: ['it'],
         q: 'Hvor kommer pizza fra?',
         options: ['Italia', 'Norge', 'Danmark', 'Tyskland'],
         answer: 0,
@@ -847,6 +869,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma2',
+        countryIds: ['de'],
         q: 'Hva er en «Bratwurst» i Tyskland?',
         options: ['En grillpølse', 'En kake', 'En suppe', 'En ostetype'],
         answer: 0,
@@ -854,6 +877,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma3',
+        countryIds: ['fr'],
         q: 'Hva er en croissant?',
         options: ['Et flakete bakverk fra Frankrike', 'En pastarett', 'En brus', 'En fisk'],
         answer: 0,
@@ -861,6 +885,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma4',
+        countryIds: ['it'],
         q: 'Hva er gelato?',
         options: ['Italiensk iskrem', 'En pastasaus', 'Et brød', 'En osterett'],
         answer: 0,
@@ -868,6 +893,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma5',
+        countryIds: ['be'],
         q: 'Hva er belgiske vafler kjent for?',
         options: ['Å være tykke og sprø med topping', 'Å være helt flate', 'Å være salte', 'Å være grønne'],
         answer: 0,
@@ -875,6 +901,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma6',
+        countryIds: ['dk'],
         q: 'Hva heter det søte, flakete bakverket som er typisk dansk?',
         options: ['Wienerbrød', 'Baguette', 'Pretzel', 'Bagel'],
         answer: 0,
@@ -882,6 +909,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma7',
+        countryIds: ['ch'],
         q: 'Hva dypper man brød i når man spiser sveitsisk «fondue»?',
         options: ['Smeltet ost', 'Iskrem', 'Saft', 'Sjokolade'],
         answer: 0,
@@ -889,6 +917,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma8',
+        countryIds: ['de'],
         q: 'Hva slags mat er «bratwurst»?',
         options: ['En grillpølse', 'En kake', 'En suppe', 'En salat'],
         answer: 0,
@@ -896,6 +925,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma9',
+        countryIds: ['it'],
         q: 'Hva drikker mange voksne italienere om morgenen?',
         options: ['Espresso (sterk kaffe)', 'Brus', 'Kakao', 'Te med melk'],
         answer: 0,
@@ -903,10 +933,25 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'ma10',
+        countryIds: ['fr'],
         q: 'Hva er croissant og baguette eksempler på?',
         options: ['Franske bakverk', 'Italiensk pasta', 'Tyske pølser', 'Danske oster'],
         answer: 0,
         fact: 'Baguette er det lange, sprø franske brødet.',
+      },
+      {
+        id: 'ma11',
+        q: 'Hva er lurt å ha med i bilen som mellommåltid på lange turer?',
+        options: ['Frukt og vann', 'Bare godteri', 'Varm suppe', 'Ingenting'],
+        answer: 0,
+        fact: 'Frukt og vann gir energi og gjør at man føler seg bedre på lange kjøreturer.',
+      },
+      {
+        id: 'ma12',
+        q: 'Hva kalles det når du smaker på en ny matrett fra et annet land?',
+        options: ['Å oppdage ny mat', 'Å lage lekser', 'Å vaske bilen', 'Å pakke kofferten'],
+        answer: 0,
+        fact: 'Å smake på lokal mat er en av de morsomste tingene med å reise til et nytt land!',
       },
     ],
   },
@@ -917,13 +962,14 @@ export const QUIZ: QuizCategory[] = [
     questions: [
       {
         id: 'mix1',
-        q: 'Hvilken retning kjører dere for å komme fra Norge til Italia?',
-        options: ['Nordover', 'Sørover', 'Østover', 'Vestover'],
-        answer: 1,
-        fact: 'Dere kjører sørover gjennom Europa – det blir varmere jo lenger sør dere kommer.',
+        q: 'Hva er lurt å gjøre på en lang biltur for å ha det bra?',
+        options: ['Ta pauser og strekke på beina', 'Aldri stoppe', 'Sitte helt stille', 'Lukke gardinene'],
+        answer: 0,
+        fact: 'Pauser hjelper både sjåføren og passasjerene å holde seg opplagte på lange turer.',
       },
       {
         id: 'mix2',
+        countryIds: ['de', 'it'],
         q: 'Hvilken felles pengevaluta bruker Tyskland og Italia?',
         options: ['Dollar', 'Kroner', 'Euro', 'Pund'],
         answer: 2,
@@ -945,10 +991,11 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'mix5',
-        q: 'Hvilket land ligger MELLOM Norge og Tyskland på ruten deres?',
-        options: ['Sverige', 'Danmark', 'Nederland', 'Polen'],
-        answer: 1,
-        fact: 'Dere tar ferje fra Norge til Danmark, og kjører så videre ned til Tyskland.',
+        countryIds: ['dk'],
+        q: 'Hvilket land tar man ofte ferje til når man kjører sørover fra Norge?',
+        options: ['Danmark', 'Italia', 'Spania', 'Hellas'],
+        answer: 0,
+        fact: 'Mange kjører ombord i ferja i Norge og våkner i Danmark, klare for videre kjøring sørover.',
       },
       {
         id: 'mix6',
@@ -971,10 +1018,10 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'mix8',
-        q: 'Omtrent hvor mange land kjører dere gjennom på hele turen til Gardasjøen?',
-        options: ['2', '4', '9', '20'],
-        answer: 2,
-        fact: 'Norge, Danmark, Tyskland, Belgia, Luxembourg, Frankrike, Sveits, Liechtenstein og Italia!',
+        q: 'Hva kaller vi den tenkte streken du krysser når du kjører fra ett land til et annet?',
+        options: ['Grensen', 'Ekvator', 'Horisonten', 'Midtlinjen'],
+        answer: 0,
+        fact: 'I Europa kan du ofte kjøre rett over grensen uten å stoppe – noen ganger ser du bare et skilt.',
       },
       {
         id: 'mix9',
@@ -990,17 +1037,11 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'mix10',
+        countryIds: ['ch'],
         q: 'Hvilket land er kjent for Alpene, sjokolade OG at man må betale for å bruke motorveien (vignett)?',
         options: ['Sveits', 'Danmark', 'Nederland', 'Norge'],
         answer: 0,
         fact: 'I Sveits må biler ha en «vignett»-klistremerke for å kjøre på motorveiene.',
-      },
-      {
-        id: 'mix11',
-        q: 'Hvilken retning kjører dere stort sett for å komme til Italia?',
-        options: ['Sørover', 'Nordover', 'Rett opp', 'Bakover'],
-        answer: 0,
-        fact: 'Dere kjører sørover gjennom Europa – det blir varmere jo lenger sør.',
       },
       {
         id: 'mix12',
@@ -1018,6 +1059,7 @@ export const QUIZ: QuizCategory[] = [
     questions: [
       {
         id: 'sv1',
+        countryIds: ['it'],
         q: 'I hvilken by står det berømte skjeve tårnet?',
         options: ['Pisa', 'Roma', 'Berlin', 'Paris'],
         answer: 0,
@@ -1025,6 +1067,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv2',
+        countryIds: ['fr'],
         q: 'Hvor finner du Eiffeltårnet?',
         options: ['Paris', 'London', 'Madrid', 'Wien'],
         answer: 0,
@@ -1032,6 +1075,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv3',
+        countryIds: ['it'],
         q: 'Hvilken by har kanaler i stedet for gater?',
         options: ['Venezia', 'Oslo', 'München', 'Brussel'],
         answer: 0,
@@ -1039,6 +1083,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv4',
+        countryIds: ['dk'],
         q: 'Hvilket land har en berømt liten havfrue-statue i hovedstaden?',
         options: ['Danmark', 'Norge', 'Italia', 'Sveits'],
         answer: 0,
@@ -1046,6 +1091,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv5',
+        countryIds: ['it'],
         q: 'Hvor ligger Gardasjøen?',
         options: ['Nord-Italia', 'Sør-Frankrike', 'Øst-Tyskland', 'Vest-Sveits'],
         answer: 0,
@@ -1053,6 +1099,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv6',
+        countryIds: ['de'],
         q: 'Hva er Brandenburger Tor?',
         options: ['En berømt port i Berlin', 'Et fjell', 'En elv', 'En pølse'],
         answer: 0,
@@ -1060,6 +1107,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv7',
+        countryIds: ['it'],
         q: 'Hvilken by har gondoler og kanaler i stedet for gater?',
         options: ['Venezia', 'Roma', 'Berlin', 'Oslo'],
         answer: 0,
@@ -1067,6 +1115,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv8',
+        countryIds: ['it'],
         q: 'Hva er Colosseum i Roma?',
         options: ['En nesten 2000 år gammel arena', 'Et fjell', 'En elv', 'En pølsebod'],
         answer: 0,
@@ -1074,6 +1123,7 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv9',
+        countryIds: ['it'],
         q: 'Hva er verdens minste land, som ligger inni Roma?',
         options: ['Vatikanstaten', 'Luxembourg', 'Monaco', 'Malta'],
         answer: 0,
@@ -1081,10 +1131,25 @@ export const QUIZ: QuizCategory[] = [
       },
       {
         id: 'sv10',
+        countryIds: ['ch'],
         q: 'Hva er Gotthard i Sveits?',
         options: ['En av verdens lengste tunneler', 'Et slott', 'En foss', 'En by'],
         answer: 0,
         fact: 'Gotthard-jernbanetunnelen er over 57 km lang.',
+      },
+      {
+        id: 'sv11',
+        q: 'Hva kaller vi et sted som er ekstra spennende å besøke på en reise?',
+        options: ['En severdighet', 'En parkeringsplass', 'En bensintank', 'Et fartsdump'],
+        answer: 0,
+        fact: 'En severdighet er noe verdt å se – som et tårn, et slott, en foss eller en gammel by.',
+      },
+      {
+        id: 'sv12',
+        q: 'Hva er lurt å gjøre når dere ser en severdighet på turen?',
+        options: ['Ta et bilde og lære litt om den', 'Late som den ikke er der', 'Kjøre fortere forbi', 'Lukke øynene'],
+        answer: 0,
+        fact: 'Et bilde og en liten historie gjør at du husker stedet lenge etter turen er over.',
       },
     ],
   },

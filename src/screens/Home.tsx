@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { Screen } from '../App'
 import { useStore } from '../store'
 import { tripCards } from '../data/bingo'
-import { tripCategories } from '../data/quiz'
+import { tripQuiz } from '../data/quiz'
 import { MISSIONS } from '../data/missions'
 import { PLATES } from '../data/plates'
 import { haversineKm } from '../lib/distance'
@@ -50,7 +50,7 @@ export default function Home({ go }: { go: (s: Screen) => void }) {
   }
 
   const cards = tripCards(countryIds)
-  const cats = tripCategories(countryIds)
+  const cats = tripQuiz(countryIds)
   const bingoCells = cards.reduce((n, c) => n + (state.bingo[c.id]?.length ?? 0), 0)
   const totalBingo = cards.reduce((n, c) => n + c.items.length, 0)
   const quizDone = cats.reduce((n, c) => n + c.questions.filter((q) => state.quiz[q.id]).length, 0)

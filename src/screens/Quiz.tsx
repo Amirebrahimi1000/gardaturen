@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { tripCategories } from '../data/quiz'
+import { tripQuiz } from '../data/quiz'
 import type { QuizCategory } from '../data/quiz'
 import { useStore } from '../store'
 
 export default function Quiz() {
   const { state, answerQuiz, routeCountries } = useStore()
-  const categories = tripCategories(routeCountries.map((c) => c.id))
+  const categories = tripQuiz(routeCountries.map((c) => c.id))
   const [cat, setCat] = useState<QuizCategory | null>(null)
   const [idx, setIdx] = useState(0)
   const [picked, setPicked] = useState<number | null>(null)
