@@ -9,12 +9,14 @@ export const POINTS = {
   mission: 5,
   plate: 2,
   flag: 2,
+  journal: 3, // per journal page written *this trip*
+  achievement: 4, // one-time mini-game achievements (e.g. beating Husk-spillet)
 } as const
 
 // Total stars needed to "drive" all the way to Gardasjøen on the reise-o-meter.
 // Chosen so the car clearly moves and can realistically arrive during the trip
 // without needing 100 % completion of everything.
-export const GOAL_STARS = 180
+export const GOAL_STARS = 260
 
 export interface JournalEntry {
   id: string
@@ -32,7 +34,9 @@ interface SaveState {
   missions: string[] // completed mission ids
   plates: string[] // collected plate codes
   flags: string[] // plate codes guessed correctly in the flag game
-  journal: JournalEntry[] // travel journal entries
+  journal: JournalEntry[] // travel journal entries (kept across resets)
+  tripJournalIds: string[] // ids of journal pages written *this trip* (reset-scoped)
+  achievements: string[] // one-time mini-game achievements (reset-scoped)
 }
 
 const EMPTY: SaveState = {
@@ -44,6 +48,8 @@ const EMPTY: SaveState = {
   plates: [],
   flags: [],
   journal: [],
+  tripJournalIds: [],
+  achievements: [],
 }
 
 const STORAGE_KEY = 'gardaturen.save.v1'
@@ -70,6 +76,7 @@ interface Store {
   guessFlag: (code: string, correct: boolean) => void
   addJournal: (entry: Omit<JournalEntry, 'id' | 'date'>) => void
   deleteJournal: (id: string) => void
+  unlockAchievement: (id: string) => void
   reset: () => void
 }
 
@@ -134,12 +141,24 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       const now = new Date()
       const id = `${now.getTime()}-${s.journal.length}`
       const date = now.toLocaleDateString('nb-NO', { weekday: 'long', day: 'numeric', month: 'long' })
-      return { ...s, journal: [{ id, date, ...entry }, ...s.journal] }
+      return {
+        ...s,
+        journal: [{ id, date, ...entry }, ...s.journal],
+        tripJournalIds: [...s.tripJournalIds, id], // counts toward this trip's stars
+      }
     })
   }, [])
 
   const deleteJournal = useCallback((id: string) => {
-    setState((s) => ({ ...s, journal: s.journal.filter((e) => e.id !== id) }))
+    setState((s) => ({
+      ...s,
+      journal: s.journal.filter((e) => e.id !== id),
+      tripJournalIds: s.tripJournalIds.filter((x) => x !== id),
+    }))
+  }, [])
+
+  const unlockAchievement = useCallback((id: string) => {
+    setState((s) => (s.achievements.includes(id) ? s : { ...s, achievements: [...s.achievements, id] }))
   }, [])
 
   const reset = useCallback(() => {
@@ -158,7 +177,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       state.countries.length * POINTS.country +
       state.missions.length * POINTS.mission +
       state.plates.length * POINTS.plate +
-      state.flags.length * POINTS.flag
+      state.flags.length * POINTS.flag +
+      state.tripJournalIds.length * POINTS.journal +
+      state.achievements.length * POINTS.achievement
     )
   }, [state])
 
@@ -174,6 +195,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     guessFlag,
     addJournal,
     deleteJournal,
+    unlockAchievement,
     reset,
   }
 

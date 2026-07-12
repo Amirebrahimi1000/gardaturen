@@ -71,8 +71,8 @@ export default function Journal() {
     <>
       <h2 className="screen-title">📔 Reisedagbok</h2>
       <p className="subtle" style={{ color: '#e0f2fe', margin: '0 4px 12px' }}>
-        Skriv om dagen i bilen! Dagboka er alltid her, blir et fint minne, og beholdes selv når
-        dere nullstiller for en ny tur.
+        Skriv om dagen i bilen! Hver side gir ⭐⭐⭐ på denne turen. Dagboka er alltid her og
+        beholdes som et minne selv når dere nullstiller for en ny tur.
       </p>
 
       {!open && (

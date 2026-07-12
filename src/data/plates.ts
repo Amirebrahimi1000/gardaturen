@@ -24,4 +24,12 @@ export const PLATES: Plate[] = [
   { code: 'FIN', country: 'Finland', flag: '🇫🇮', onRoute: false },
   { code: 'CZ', country: 'Tsjekkia', flag: '🇨🇿', onRoute: false },
   { code: 'E', country: 'Spania', flag: '🇪🇸', onRoute: false },
+  { code: 'GB', country: 'Storbritannia', flag: '🇬🇧', onRoute: false },
+  { code: 'IRL', country: 'Irland', flag: '🇮🇪', onRoute: false },
+  { code: 'P', country: 'Portugal', flag: '🇵🇹', onRoute: false },
+  { code: 'GR', country: 'Hellas', flag: '🇬🇷', onRoute: false },
+  { code: 'H', country: 'Ungarn', flag: '🇭🇺', onRoute: false },
+  { code: 'HR', country: 'Kroatia', flag: '🇭🇷', onRoute: false },
+  { code: 'SLO', country: 'Slovenia', flag: '🇸🇮', onRoute: false },
+  { code: 'IS', country: 'Island', flag: '🇮🇸', onRoute: false },
 ]

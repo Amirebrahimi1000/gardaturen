@@ -6,16 +6,16 @@ import Quiz from './screens/Quiz'
 import Countries from './screens/Countries'
 import Missions from './screens/Missions'
 import Plates from './screens/Plates'
-import Flags from './screens/Flags'
+import Games from './screens/Games'
 import Journal from './screens/Journal'
 
-export type Screen = 'home' | 'bingo' | 'quiz' | 'land' | 'oppdrag' | 'skilt' | 'flagg' | 'dagbok'
+export type Screen = 'home' | 'bingo' | 'quiz' | 'land' | 'oppdrag' | 'skilt' | 'spill' | 'dagbok'
 
 const TABS: { id: Screen; label: string; emoji: string }[] = [
   { id: 'home', label: 'Hjem', emoji: '🏠' },
   { id: 'bingo', label: 'Bingo', emoji: '🎯' },
   { id: 'quiz', label: 'Quiz', emoji: '❓' },
-  { id: 'flagg', label: 'Flagg', emoji: '🚩' },
+  { id: 'spill', label: 'Spill', emoji: '🎮' },
   { id: 'land', label: 'Land', emoji: '🌍' },
   { id: 'oppdrag', label: 'Oppdrag', emoji: '🏆' },
   { id: 'skilt', label: 'Skilt', emoji: '🚗' },
@@ -70,7 +70,7 @@ function Shell() {
       {screen === 'land' && <Countries />}
       {screen === 'oppdrag' && <Missions />}
       {screen === 'skilt' && <Plates />}
-      {screen === 'flagg' && <Flags />}
+      {screen === 'spill' && <Games />}
       {screen === 'dagbok' && <Journal />}
 
       <nav className="tabbar">

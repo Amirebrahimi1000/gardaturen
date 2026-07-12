@@ -674,6 +674,37 @@ button {
   outline: 3px solid var(--lake);
 }
 
+/* ---- Memory (Husk-spillet) ----------------------------------------------- */
+.memory-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.mcard {
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: var(--lake);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.12s ease, background 0.2s ease;
+}
+
+.mcard:active {
+  transform: scale(0.94);
+}
+
+.mcard.up {
+  background: #f1f5f9;
+}
+
+.mcard.done {
+  background: linear-gradient(160deg, var(--grass), var(--lake));
+  animation: pop 0.3s ease;
+}
+
 .export-row {
   display: flex;
   gap: 10px;
