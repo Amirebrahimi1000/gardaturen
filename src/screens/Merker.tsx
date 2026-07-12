@@ -2,11 +2,16 @@ import { useState } from 'react'
 import { Badges } from '../components/Badges'
 import { Diploma } from '../components/Diploma'
 
-export default function Merker() {
+export default function Merker({ onBack }: { onBack: () => void }) {
   const [showDiploma, setShowDiploma] = useState(false)
   return (
     <>
-      <h2 className="screen-title">🏅 Merker & diplom</h2>
+      <button className="backbtn" onClick={onBack}>
+        ← Tilbake
+      </button>
+      <h2 className="screen-title" style={{ marginTop: 10 }}>
+        🏅 Merker & diplom
+      </h2>
       <p className="subtle" style={{ color: '#e0f2fe', margin: '0 4px 12px' }}>
         Samle merker ved å utforske appen – og se reisediplomet ditt!
       </p>

@@ -125,7 +125,7 @@ function Shell() {
         {screen === 'skilt' && <Plates />}
         {screen === 'spill' && <Games />}
         {screen === 'dagbok' && <Journal />}
-        {screen === 'merker' && <Merker />}
+        {screen === 'merker' && <Merker onBack={() => setScreen('home')} />}
       </ErrorBoundary>
 
       <nav className="tabbar">
