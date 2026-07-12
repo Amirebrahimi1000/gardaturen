@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { COUNTRIES } from '../data/countries'
 import { useStore } from '../store'
+import type { JournalEntry } from '../store'
 
 const MOODS = ['😀', '😃', '😎', '🤩', '😴', '🤢', '🥱', '😍']
 
@@ -12,6 +13,19 @@ const PROMPTS = [
   'Hva gleder du deg mest til?',
 ]
 
+// Build a readable text version of the whole journal, oldest entry first.
+function buildText(entries: JournalEntry[], name: string): string {
+  const who = name ? `${name} sin reise til Gardasjøen` : 'Reise til Gardasjøen'
+  const line = '='.repeat(40)
+  const sep = '-'.repeat(40)
+  const header = `Reisedagbok – Gardaturen\n${who}\n${line}\n\n`
+  const body = [...entries]
+    .reverse() // stored newest-first → export oldest-first (chronological)
+    .map((e) => `${e.date}   ${e.country} ${e.mood}\n\n${e.text}\n\n${sep}\n`)
+    .join('\n')
+  return header + body
+}
+
 export default function Journal() {
   const { state, addJournal, deleteJournal } = useStore()
   const [open, setOpen] = useState(false)
@@ -19,6 +33,7 @@ export default function Journal() {
   const [mood, setMood] = useState('😀')
   const [country, setCountry] = useState('🇳🇴')
   const [prompt] = useState(() => PROMPTS[Math.floor(Math.random() * PROMPTS.length)])
+  const [copied, setCopied] = useState(false)
 
   const save = () => {
     if (!text.trim()) return
@@ -28,17 +43,53 @@ export default function Journal() {
     setOpen(false)
   }
 
+  const exportFile = () => {
+    const blob = new Blob([buildText(state.journal, state.playerName)], {
+      type: 'text/plain;charset=utf-8',
+    })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'reisedagbok-gardaturen.txt'
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    setTimeout(() => URL.revokeObjectURL(url), 1000)
+  }
+
+  const copyAll = async () => {
+    try {
+      await navigator.clipboard.writeText(buildText(state.journal, state.playerName))
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      alert('Kunne ikke kopiere automatisk. Prøv «Last ned» i stedet.')
+    }
+  }
+
   return (
     <>
       <h2 className="screen-title">📔 Reisedagbok</h2>
       <p className="subtle" style={{ color: '#e0f2fe', margin: '0 4px 12px' }}>
-        Skriv om dagen i bilen! Hver dagbokside gir ⭐⭐⭐ – og blir et fint minne etterpå.
+        Skriv om dagen i bilen! Dagboka er alltid her, blir et fint minne, og beholdes selv når
+        dere nullstiller for en ny tur.
       </p>
 
       {!open && (
         <button className="primary" style={{ marginTop: 0 }} onClick={() => setOpen(true)}>
           ✏️ Skriv ny dagbokside
         </button>
+      )}
+
+      {!open && state.journal.length > 0 && (
+        <div className="export-row">
+          <button className="backbtn" style={{ marginTop: 0 }} onClick={exportFile}>
+            📤 Last ned
+          </button>
+          <button className="backbtn" style={{ marginTop: 0 }} onClick={copyAll}>
+            {copied ? '✅ Kopiert!' : '📋 Kopier alt'}
+          </button>
+        </div>
       )}
 
       {open && (

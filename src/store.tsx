@@ -9,7 +9,6 @@ export const POINTS = {
   mission: 5,
   plate: 2,
   flag: 2,
-  journal: 3,
 } as const
 
 // Total stars needed to "drive" all the way to Gardasjøen on the reise-o-meter.
@@ -144,7 +143,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const reset = useCallback(() => {
-    setState((s) => ({ ...EMPTY, playerName: s.playerName }))
+    // Keep the player's name AND the whole travel journal – the journal is a
+    // permanent keepsake that must survive a "new trip" reset. Only the game
+    // progress (stars, bingo, quiz, …) is cleared.
+    setState((s) => ({ ...EMPTY, playerName: s.playerName, journal: s.journal }))
   }, [])
 
   const stars = useMemo(() => {
@@ -156,8 +158,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       state.countries.length * POINTS.country +
       state.missions.length * POINTS.mission +
       state.plates.length * POINTS.plate +
-      state.flags.length * POINTS.flag +
-      state.journal.length * POINTS.journal
+      state.flags.length * POINTS.flag
     )
   }, [state])
 

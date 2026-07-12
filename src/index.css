@@ -674,6 +674,17 @@ button {
   outline: 3px solid var(--lake);
 }
 
+.export-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.export-row .backbtn {
+  flex: 1;
+  text-align: center;
+}
+
 .journal-input {
   font-family: inherit;
   font-size: 16px;

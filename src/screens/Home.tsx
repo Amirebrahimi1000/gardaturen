@@ -73,7 +73,11 @@ export default function Home({ go }: { go: (s: Screen) => void }) {
       <button
         className="reset-link"
         onClick={() => {
-          if (confirm('Nullstille alle stjerner og starte reisen på nytt (f.eks. for hjemturen)?'))
+          if (
+            confirm(
+              'Nullstille stjerner og spillframgang for en ny tur (f.eks. hjemturen)?\n\nReisedagboka beholdes – den forsvinner ikke.',
+            )
+          )
             reset()
         }}
       >
