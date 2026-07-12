@@ -1,0 +1,92 @@
+import { useState } from 'react'
+import { StoreProvider, useStore } from './store'
+import Home from './screens/Home'
+import Bingo from './screens/Bingo'
+import Quiz from './screens/Quiz'
+import Countries from './screens/Countries'
+import Missions from './screens/Missions'
+import Plates from './screens/Plates'
+
+export type Screen = 'home' | 'bingo' | 'quiz' | 'land' | 'oppdrag' | 'skilt'
+
+const TABS: { id: Screen; label: string; emoji: string }[] = [
+  { id: 'home', label: 'Hjem', emoji: '🏠' },
+  { id: 'bingo', label: 'Bingo', emoji: '🎯' },
+  { id: 'quiz', label: 'Quiz', emoji: '❓' },
+  { id: 'land', label: 'Land', emoji: '🌍' },
+  { id: 'oppdrag', label: 'Oppdrag', emoji: '🏆' },
+  { id: 'skilt', label: 'Skilt', emoji: '🚗' },
+]
+
+function Shell() {
+  const { state, stars, setName } = useStore()
+  const [screen, setScreen] = useState<Screen>('home')
+  const [nameDraft, setNameDraft] = useState('')
+
+  // First run: ask for the player's name.
+  if (!state.playerName) {
+    return (
+      <div className="intro">
+        <div className="big-emoji">🚗🏔️</div>
+        <h1>Gardaturen</h1>
+        <p style={{ color: '#fff', maxWidth: 320, fontWeight: 700 }}>
+          Reisespill for hele veien fra Skien til Gardasjøen! Hva heter du?
+        </p>
+        <input
+          autoFocus
+          placeholder="Navnet ditt"
+          value={nameDraft}
+          onChange={(e) => setNameDraft(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && nameDraft.trim()) setName(nameDraft.trim())
+          }}
+        />
+        <button
+          className="primary"
+          style={{ maxWidth: 320 }}
+          disabled={!nameDraft.trim()}
+          onClick={() => nameDraft.trim() && setName(nameDraft.trim())}
+        >
+          Start reisen! 🎉
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <div className="app">
+      <div className="topbar">
+        <h1>Gardaturen</h1>
+        <span className="starcount">⭐ {stars}</span>
+      </div>
+
+      {screen === 'home' && <Home go={setScreen} />}
+      {screen === 'bingo' && <Bingo />}
+      {screen === 'quiz' && <Quiz />}
+      {screen === 'land' && <Countries />}
+      {screen === 'oppdrag' && <Missions />}
+      {screen === 'skilt' && <Plates />}
+
+      <nav className="tabbar">
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            className={screen === t.id ? 'active' : ''}
+            onClick={() => setScreen(t.id)}
+          >
+            <span className="tabemoji">{t.emoji}</span>
+            {t.label}
+          </button>
+        ))}
+      </nav>
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <StoreProvider>
+      <Shell />
+    </StoreProvider>
+  )
+}
