@@ -8,7 +8,7 @@ interface Q {
   unit: string
 }
 
-const QUESTIONS: Q[] = [
+const POOL: Q[] = [
   { q: 'Omtrent hvor mange km er hele kjøreturen fra Skien til Gardasjøen?', answer: 2000, unit: 'km' },
   { q: 'Hvor høyt er Eiffeltårnet i Paris?', answer: 330, unit: 'm' },
   { q: 'Hvor lang er togtunnelen gjennom Gotthard i Sveits?', answer: 57, unit: 'km' },
@@ -17,7 +17,25 @@ const QUESTIONS: Q[] = [
   { q: 'Omtrent hvor mange timer tar hele kjøreturen (uten pauser)?', answer: 30, unit: 'timer' },
   { q: 'Hvor lang er Gardasjøen fra nord til sør?', answer: 52, unit: 'km' },
   { q: 'Hvor mange land kjører dere gjennom på hele turen?', answer: 9, unit: 'stk' },
+  { q: 'Hvor høyt er Sveits sitt berømte fjell Matterhorn?', answer: 4478, unit: 'm' },
+  { q: 'Hvor mange innbyggere bor det i Luxembourg (hele landet)?', answer: 660000, unit: 'stk' },
+  { q: 'Hvor gammelt er tårnet i Pisa omtrent?', answer: 850, unit: 'år' },
+  { q: 'Hvor mange offisielle språk har Sveits?', answer: 4, unit: 'stk' },
+  { q: 'Hvor lang er Norges lengste veitunnel (Lærdalstunnelen)?', answer: 24, unit: 'km' },
+  { q: 'Hvor mange kilometer i timen er fartsgrensen på mange norske motorveier?', answer: 110, unit: 'km/t' },
+  { q: 'Hvor dyp er Gardasjøen på det dypeste?', answer: 346, unit: 'm' },
+  { q: 'Hvor mange land i Europa bruker euro?', answer: 20, unit: 'stk' },
 ]
+const PER_GAME = 6
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
 
 function closeness(guess: number, answer: number): string {
   const off = Math.abs(guess - answer) / answer
@@ -30,6 +48,7 @@ function closeness(guess: number, answer: number): string {
 export default function DistanceGuess() {
   const { unlockAchievement } = useStore()
   const [players, setPlayers] = useState<1 | 2 | null>(null)
+  const [list, setList] = useState<Q[]>([])
   const [idx, setIdx] = useState(0)
   const [g1, setG1] = useState('')
   const [g2, setG2] = useState('')
@@ -37,11 +56,12 @@ export default function DistanceGuess() {
   const [revealed, setRevealed] = useState(false)
   const [score, setScore] = useState({ a: 0, b: 0 })
 
-  const q = QUESTIONS[idx]
-  const last = idx === QUESTIONS.length - 1
+  const q = list[idx]
+  const last = idx === list.length - 1
 
   const start = (n: 1 | 2) => {
     setPlayers(n)
+    setList(shuffle(POOL).slice(0, PER_GAME))
     setIdx(0)
     setScore({ a: 0, b: 0 })
     setG1('')
@@ -100,7 +120,7 @@ export default function DistanceGuess() {
       <div className="card" style={{ marginTop: 12 }}>
         <div className="subtle" style={{ display: 'flex', justifyContent: 'space-between' }}>
           <span>
-            Spørsmål {idx + 1}/{QUESTIONS.length}
+            Spørsmål {idx + 1}/{list.length}
           </span>
           {players === 2 && (
             <span style={{ fontWeight: 800 }}>

@@ -16,7 +16,7 @@ export const POINTS = {
 // Total stars needed to "drive" all the way to Gardasjøen on the reise-o-meter.
 // Chosen so the car clearly moves and can realistically arrive during the trip
 // without needing 100 % completion of everything.
-export const GOAL_STARS = 260
+export const GOAL_STARS = 320
 
 export interface JournalEntry {
   id: string

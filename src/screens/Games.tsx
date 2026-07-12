@@ -20,14 +20,14 @@ interface Game {
 }
 
 const GAMES: Game[] = [
-  { id: 'flagg', emoji: '🚩', name: 'Gjett landet', desc: 'Kjenn igjen flaggene fra Europa', two: false, C: Flags },
-  { id: 'husk', emoji: '🧠', name: 'Husk-spillet', desc: 'Finn parene – memory med reise-symboler', two: false, C: Memory },
+  { id: 'flagg', emoji: '🚩', name: 'Gjett landet', desc: 'Kjenn igjen flaggene fra Europa', two: true, C: Flags },
+  { id: 'husk', emoji: '🧠', name: 'Husk-spillet', desc: 'Finn parene – memory med reise-symboler', two: true, C: Memory },
   { id: 'reaksjon', emoji: '⚡', name: 'Reaksjonstest', desc: 'Trykk når skjermen blir grønn', two: true, C: Reaction },
   { id: 'saks', emoji: '✊', name: 'Stein-saks-papir', desc: 'Mot appen eller mot hverandre', two: true, C: RockPaperScissors },
   { id: 'avstand', emoji: '📏', name: 'Gjett avstanden', desc: 'Hvem gjetter nærmest?', two: true, C: DistanceGuess },
   { id: 'skiltmatte', emoji: '🔢', name: 'Skilt-matte', desc: 'Regn ut tallene på skiltet', two: true, C: PlateMath },
+  { id: 'anagram', emoji: '🔀', name: 'Vri på ordet', desc: 'Stokk bokstavene til et ord', two: true, C: Anagram },
   { id: 'ordsok', emoji: '🔤', name: 'Ordsøk', desc: 'Finn de skjulte reise-ordene', two: false, C: WordSearch },
-  { id: 'anagram', emoji: '🔀', name: 'Vri på ordet', desc: 'Stokk bokstavene til et ord', two: false, C: Anagram },
   { id: 'rute', emoji: '🗺️', name: 'Reiseruta', desc: 'Sett landene i riktig rekkefølge', two: false, C: RouteOrder },
 ]
 
