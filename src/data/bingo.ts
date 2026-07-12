@@ -112,6 +112,150 @@ export const BINGO_CARDS: BingoCard[] = [
     ],
   },
   {
+    id: 'liechtenstein', title: 'Liechtenstein-bingo', flag: '🇱🇮', countryIds: ['li'],
+    items: [
+      ['🇱🇮', 'Liechtensteinsk flagg'], ['🚗', 'Bil med FL-skilt'], ['🏰', 'Fyrsteslottet'], ['🏔️', 'Alpetopp'],
+      ['🐄', 'Ku med bjelle'], ['🌲', 'Fjellskog'], ['⛪', 'Kirke i Vaduz'], ['🍇', 'Vinmark'],
+      ['🚵', 'Fjellsykkel'], ['🏦', 'Bank'], ['🏞️', 'Elva Rhinen'], ['🚡', 'Taubane'],
+      ['🌸', 'Blomstereng'], ['☀️', 'Sol over fjell'], ['🚌', 'Turbuss'], ['🅿️', 'Utsiktsplass'],
+    ],
+  },
+  {
+    id: 'sverige', title: 'Sverige-bingo', flag: '🇸🇪', countryIds: ['se'],
+    items: [
+      ['🇸🇪', 'Svensk flagg'], ['🚗', 'Bil med S-skilt'], ['🌲', 'Endeløs granskog'], ['🫎', 'Elg-skilt'],
+      ['🏠', 'Rødt trehus'], ['🛒', 'IKEA-skilt'], ['🦌', 'Hjort eller rein'], ['🏞️', 'Innsjø'],
+      ['🚙', 'En Volvo'], ['🌾', 'Kornåker'], ['🐄', 'Ku'], ['🌉', 'Lang bro'],
+      ['🕳️', 'Tunnel'], ['⛴️', 'Ferje'], ['☀️', 'Sol'], ['🚲', 'Syklist'],
+    ],
+  },
+  {
+    id: 'nederland', title: 'Nederland-bingo', flag: '🇳🇱', countryIds: ['nl'],
+    items: [
+      ['🇳🇱', 'Nederlandsk flagg'], ['🚗', 'Bil med NL-skilt'], ['🌬️', 'Vindmølle'], ['🌷', 'Tulipaner'],
+      ['🚲', 'Masse sykler'], ['🧀', 'Ostebod'], ['🐄', 'Ku'], ['🌊', 'Dike eller kanal'],
+      ['⛴️', 'Kanalbåt'], ['🟩', 'Helt flatt land'], ['🚜', 'Traktor'], ['🌉', 'Bro'],
+      ['🚛', 'Lastebil'], ['☁️', 'Skyer'], ['🌾', 'Åker'], ['🏠', 'Smalt hus'],
+    ],
+  },
+  {
+    id: 'osterrike', title: 'Østerrike-bingo', flag: '🇦🇹', countryIds: ['at'],
+    items: [
+      ['🇦🇹', 'Østerriksk flagg'], ['🚗', 'Bil med A-skilt'], ['🏔️', 'Alpetopp'], ['⛷️', 'Skisted-skilt'],
+      ['🏰', 'Slott'], ['🐄', 'Ku med bjelle'], ['🌲', 'Barskog'], ['🎻', 'Musikk-skilt'],
+      ['🚡', 'Taubane'], ['🕳️', 'Fjelltunnel'], ['🌉', 'Viadukt'], ['💧', 'Fjellelv'],
+      ['⛪', 'Kirketårn'], ['🌸', 'Blomstereng'], ['☀️', 'Sol over fjell'], ['🚌', 'Turbuss'],
+    ],
+  },
+  {
+    id: 'spania', title: 'Spania-bingo', flag: '🇪🇸', countryIds: ['es'],
+    items: [
+      ['🇪🇸', 'Spansk flagg'], ['🚗', 'Bil med E-skilt'], ['☀️', 'Stekende sol'], ['🫒', 'Olivenlund'],
+      ['🍊', 'Appelsintre'], ['🏖️', 'Strand'], ['⚽', 'Fotball-skilt'], ['🌻', 'Solsikkeåker'],
+      ['🏰', 'Borg (castell)'], ['🌴', 'Palme'], ['🍅', 'Tomatåker'], ['🚗', 'Rød bil'],
+      ['🌉', 'Bro'], ['⛽', 'Bensinstasjon'], ['🏜️', 'Tørt landskap'], ['🐂', 'Okse-skilt'],
+    ],
+  },
+  {
+    id: 'portugal', title: 'Portugal-bingo', flag: '🇵🇹', countryIds: ['pt'],
+    items: [
+      ['🇵🇹', 'Portugisisk flagg'], ['🚗', 'Bil med P-skilt'], ['🌊', 'Atlanterhavet'], ['🐟', 'Fiskebåt'],
+      ['🧱', 'Fargerike fliser'], ['🌉', 'Rød bro (Lisboa)'], ['🚋', 'Gul trikk'], ['🍊', 'Appelsintre'],
+      ['🌴', 'Palme'], ['🏄', 'Surfer'], ['🍇', 'Vinmark'], ['⛪', 'Kirke'],
+      ['☀️', 'Sol'], ['🚗', 'Bil'], ['🅿️', 'Rasteplass'], ['🐄', 'Ku'],
+    ],
+  },
+  {
+    id: 'polen', title: 'Polen-bingo', flag: '🇵🇱', countryIds: ['pl'],
+    items: [
+      ['🇵🇱', 'Polsk flagg'], ['🚗', 'Bil med PL-skilt'], ['🌲', 'Stor skog'], ['🦬', 'Bison-skilt'],
+      ['🏰', 'Slott'], ['⛪', 'Kirke'], ['🌾', 'Kornåker'], ['🐄', 'Ku'],
+      ['🚛', 'Lastebil'], ['🏘️', 'Fargerik gamleby'], ['🚜', 'Traktor'], ['🌉', 'Bro'],
+      ['🕳️', 'Tunnel'], ['⛽', 'Bensinstasjon'], ['☀️', 'Sol'], ['🚗', 'Rød bil'],
+    ],
+  },
+  {
+    id: 'tsjekkia', title: 'Tsjekkia-bingo', flag: '🇨🇿', countryIds: ['cz'],
+    items: [
+      ['🇨🇿', 'Tsjekkisk flagg'], ['🚗', 'Bil med CZ-skilt'], ['🏰', 'Eventyrslott'], ['🍺', 'Ølhus-skilt'],
+      ['🕰️', 'Klokketårn'], ['⛪', 'Kirketårn'], ['🌲', 'Skog'], ['🌉', 'Bro over elv'],
+      ['🏘️', 'By med røde tak'], ['🐄', 'Ku'], ['🌾', 'Åker'], ['🚋', 'Trikk'],
+      ['🚛', 'Lastebil'], ['☀️', 'Sol'], ['🕳️', 'Tunnel'], ['🚗', 'Bil'],
+    ],
+  },
+  {
+    id: 'slovakia', title: 'Slovakia-bingo', flag: '🇸🇰', countryIds: ['sk'],
+    items: [
+      ['🇸🇰', 'Slovakisk flagg'], ['🚗', 'Bil med SK-skilt'], ['🏔️', 'Tatra-fjell'], ['🏰', 'Borg på en høyde'],
+      ['🌲', 'Fjellskog'], ['🕳️', 'Grotte-skilt'], ['💧', 'Elva Donau'], ['⛪', 'Trekirke'],
+      ['🐑', 'Sau'], ['🐄', 'Ku'], ['🌉', 'Bro'], ['🚜', 'Traktor'],
+      ['🌾', 'Åker'], ['☀️', 'Sol'], ['🚌', 'Buss'], ['🚗', 'Bil'],
+    ],
+  },
+  {
+    id: 'slovenia', title: 'Slovenia-bingo', flag: '🇸🇮', countryIds: ['si'],
+    items: [
+      ['🇸🇮', 'Slovensk flagg'], ['🚗', 'Bil med SLO-skilt'], ['🏔️', 'Alpetopp'], ['🏞️', 'Bled-innsjø'],
+      ['🌲', 'Grønn skog'], ['🕳️', 'Drypphule-skilt'], ['💧', 'Turkis elv'], ['⛪', 'Kirke på en øy'],
+      ['🐝', 'Bikube'], ['🐄', 'Ku'], ['🌉', 'Bro'], ['🌸', 'Blomstereng'],
+      ['☀️', 'Sol'], ['🚵', 'Fjellsykkel'], ['🌊', 'Kort kyststripe'], ['🚗', 'Bil'],
+    ],
+  },
+  {
+    id: 'kroatia', title: 'Kroatia-bingo', flag: '🇭🇷', countryIds: ['hr'],
+    items: [
+      ['🇭🇷', 'Kroatisk flagg'], ['🚗', 'Bil med HR-skilt'], ['🌊', 'Blått hav'], ['⛵', 'Seilbåt'],
+      ['🏝️', 'En øy'], ['🏰', 'Bymur (Dubrovnik)'], ['💦', 'Foss (Plitvice)'], ['🐕', 'Dalmatiner-hund'],
+      ['🫒', 'Olivenlund'], ['🍇', 'Vinmark'], ['⛪', 'Kirke'], ['🌴', 'Palme'],
+      ['☀️', 'Sol'], ['🚤', 'Motorbåt'], ['🚗', 'Bil'], ['🅿️', 'Rasteplass'],
+    ],
+  },
+  {
+    id: 'ungarn', title: 'Ungarn-bingo', flag: '🇭🇺', countryIds: ['hu'],
+    items: [
+      ['🇭🇺', 'Ungarsk flagg'], ['🚗', 'Bil med H-skilt'], ['🌉', 'Bro over Donau'], ['♨️', 'Bade-skilt'],
+      ['🌶️', 'Paprika-bod'], ['🏰', 'Slott'], ['🐴', 'Hest på sletta'], ['🌾', 'Stor slette'],
+      ['⛪', 'Kirke'], ['🐄', 'Ku'], ['🚋', 'Gammel t-bane'], ['🌉', 'Bro'],
+      ['☀️', 'Sol'], ['🚜', 'Traktor'], ['🚗', 'Bil'], ['🅿️', 'Rasteplass'],
+    ],
+  },
+  {
+    id: 'storbritannia', title: 'Storbritannia-bingo', flag: '🇬🇧', countryIds: ['gb'],
+    items: [
+      ['🇬🇧', 'Britisk flagg'], ['🚗', 'Bil med GB-skilt'], ['↔️', 'Kjører på venstre side'], ['🚌', 'Rød dobbeltdekker'],
+      ['🕰️', 'Stort klokketårn'], ['☂️', 'Noen med paraply'], ['🐑', 'Sau på grønn eng'], ['🏰', 'Gammelt slott'],
+      ['🌧️', 'Regn'], ['☕', 'Te-skilt'], ['🚕', 'Svart drosje'], ['⛪', 'Katedral'],
+      ['🌉', 'Bro'], ['🐄', 'Ku'], ['🌲', 'Skog'], ['🅿️', 'Rasteplass'],
+    ],
+  },
+  {
+    id: 'irland', title: 'Irland-bingo', flag: '🇮🇪', countryIds: ['ie'],
+    items: [
+      ['🇮🇪', 'Irsk flagg'], ['🚗', 'Bil med IRL-skilt'], ['☘️', 'Kløver'], ['🐑', 'Masse sauer'],
+      ['🟢', 'Knallgrønne enger'], ['🌧️', 'Regn'], ['🌈', 'Regnbue'], ['🏰', 'Borgruin'],
+      ['🌊', 'Klipper mot havet'], ['⛪', 'Steinkirke'], ['🐄', 'Ku'], ['↔️', 'Kjører på venstre'],
+      ['🎻', 'Musikk-pub-skilt'], ['☀️', 'Sol mellom skyer'], ['🌉', 'Bro'], ['🅿️', 'Rasteplass'],
+    ],
+  },
+  {
+    id: 'finland', title: 'Finland-bingo', flag: '🇫🇮', countryIds: ['fi'],
+    items: [
+      ['🇫🇮', 'Finsk flagg'], ['🚗', 'Bil med FIN-skilt'], ['🏞️', 'Innsjø'], ['🌲', 'Furuskog'],
+      ['🦌', 'Reinsdyr-skilt'], ['🛖', 'Badstue (sauna)'], ['❄️', 'Snø'], ['🫎', 'Elg-skilt'],
+      ['🚗', 'Rød bil'], ['🌉', 'Bro'], ['🐄', 'Ku'], ['🏠', 'Trehytte'],
+      ['☀️', 'Midnattssol'], ['🚛', 'Tømmerbil'], ['🌾', 'Åker'], ['🅿️', 'Rasteplass'],
+    ],
+  },
+  {
+    id: 'hellas', title: 'Hellas-bingo', flag: '🇬🇷', countryIds: ['gr'],
+    items: [
+      ['🇬🇷', 'Gresk flagg'], ['🚗', 'Bil med GR-skilt'], ['🏛️', 'Gamle søyler'], ['🌊', 'Blått hav'],
+      ['⛵', 'Seilbåt'], ['🐐', 'Geit i fjellet'], ['🫒', 'Olivenlund'], ['☀️', 'Stekende sol'],
+      ['🏝️', 'En øy'], ['🏠', 'Hvitt hus, blått tak'], ['🍋', 'Sitrontre'], ['⛪', 'Kloster på fjell'],
+      ['🐟', 'Fiskebåt'], ['🌴', 'Palme'], ['🚗', 'Bil'], ['🅿️', 'Rasteplass'],
+    ],
+  },
+  {
     id: 'kjoretoy',
     title: 'Kjøretøy-bingo',
     flag: '🚙',
