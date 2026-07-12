@@ -394,6 +394,20 @@ button {
 }
 
 /* ---- Countries ----------------------------------------------------------- */
+.country-map-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 4px;
+}
+
+.country-map {
+  width: 150px;
+  height: auto;
+  max-width: 55%;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
 .country-facts {
   margin-top: 12px;
 }

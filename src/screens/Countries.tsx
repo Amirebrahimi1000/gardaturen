@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { byOrder } from '../data/countries'
 import { useStore } from '../store'
+import { CountryMap } from '../components/CountryMap'
 
 export default function Countries() {
   const { state, unlockCountry } = useStore()
@@ -67,6 +68,9 @@ export default function Countries() {
 
             {open && (
               <div className="pop">
+                <div className="country-map-wrap">
+                  <CountryMap id={c.id} />
+                </div>
                 <div className="info-row">
                   <span className="pill">
                     <b>Hovedstad:</b> {c.capital}
