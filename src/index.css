@@ -348,6 +348,59 @@ button {
   margin-top: 14px;
 }
 
+/* Bingo line scoreboard */
+.bingo-score {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 4px 0 12px;
+}
+
+.bscore-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 7px 4px;
+  text-align: center;
+}
+
+.bscore-item b {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--lake);
+  line-height: 1;
+}
+
+.bscore-item span {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.bscore-item.total b {
+  color: #94a3b8;
+}
+
+.bscore-item.total.on {
+  background: linear-gradient(160deg, #fde68a, #fbbf24);
+}
+
+.bscore-item.total.on b {
+  color: #7c2d12;
+}
+
+.bscore-item.total.on span {
+  color: #92400e;
+}
+
+/* A cell that is part of a completed line gets a gold ring. */
+.bingo-cell.inline {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
 /* ---- Chips / list selectors --------------------------------------------- */
 .chips {
   display: flex;
@@ -1321,10 +1374,11 @@ button {
 }
 
 .badge-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   background: #f1f5f9;
   border-radius: 14px;
   padding: 10px 6px;
@@ -1335,12 +1389,31 @@ button {
   background: linear-gradient(160deg, #fde68a, #fbbf24);
 }
 
+/* Tiered medals get their own metal colour. */
+.badge-item.tier-bronze {
+  background: linear-gradient(160deg, #f3cfa4, #c77b3c);
+}
+.badge-item.tier-silver {
+  background: linear-gradient(160deg, #eef2f6, #aeb9c4);
+}
+.badge-item.tier-gold {
+  background: linear-gradient(160deg, #fde68a, #f59e0b);
+}
+
 .badge-item:not(.earned) {
   opacity: 0.7;
 }
 
 .badge-emoji {
+  position: relative;
   font-size: 28px;
+}
+
+.badge-medal {
+  position: absolute;
+  right: -14px;
+  bottom: -4px;
+  font-size: 16px;
 }
 
 .badge-item:not(.earned) .badge-emoji {
@@ -1355,6 +1428,59 @@ button {
 .badge-hint {
   font-size: 11px;
   color: var(--muted);
+}
+
+.badge-item.earned .badge-hint,
+.badge-item.tier-bronze .badge-hint,
+.badge-item.tier-silver .badge-hint,
+.badge-item.tier-gold .badge-hint {
+  color: #7c2d12;
+  font-weight: 700;
+}
+
+/* Progress bar toward the next level. */
+.badge-bar {
+  width: 82%;
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.16);
+  overflow: hidden;
+}
+
+.badge-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--grass), var(--lake));
+  transition: width 0.3s ease;
+}
+
+/* "Nytt!" ribbon + pulse for freshly earned badges. */
+.badge-new {
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.badge-item.isnew {
+  animation: badge-pop 0.6s ease 3;
+}
+
+@keyframes badge-pop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.07);
+  }
 }
 
 /* ---- Diploma ------------------------------------------------------------- */
@@ -1410,13 +1536,16 @@ button {
 
 .diploma-stats {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 4px;
   margin: 12px 0;
 }
 
 .diploma-stats div {
   display: flex;
   flex-direction: column;
+  flex: 1 0 28%;
 }
 
 .diploma-stats b {
@@ -1429,9 +1558,59 @@ button {
   color: #94a3b8;
 }
 
-.diploma-flags {
-  font-size: 24px;
-  margin: 8px 0;
+/* Passport-style stamps for each visited country. */
+.diploma-stamps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px 0 4px;
+}
+
+.stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  border: 2px dashed #b45309;
+  border-radius: 8px;
+  padding: 4px 6px;
+  min-width: 52px;
+  background: rgba(180, 83, 9, 0.06);
+}
+
+.stamp-flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.stamp-name {
+  font-size: 9px;
+  font-weight: 800;
+  color: #b45309;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Row of earned-badge medals. */
+.diploma-medals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin: 10px 0 4px;
+}
+
+.diploma-medal {
+  position: relative;
+  font-size: 22px;
+}
+
+.diploma-medal-tier {
+  position: absolute;
+  right: -6px;
+  bottom: -4px;
+  font-size: 12px;
 }
 
 .diploma-date {
@@ -1494,11 +1673,12 @@ button {
 
 :root[data-theme='dark'] .opt,
 :root[data-theme='dark'] .bingo-cell,
+:root[data-theme='dark'] .bscore-item,
 :root[data-theme='dark'] .pick,
 :root[data-theme='dark'] .ws-cell,
 :root[data-theme='dark'] .pill,
 :root[data-theme='dark'] .route-btn,
-:root[data-theme='dark'] .badge-item,
+:root[data-theme='dark'] .badge-item:not(.earned),
 :root[data-theme='dark'] .plate,
 :root[data-theme='dark'] .trip-switch,
 :root[data-theme='dark'] .mcard.up {

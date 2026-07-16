@@ -14,6 +14,61 @@ export function tripCards(countryIds: string[]): BingoCard[] {
   )
 }
 
+// ---- Line scoring ---------------------------------------------------------
+// Bonus stars for completing whole lines on a 4x4 board. The values differ so
+// that the harder achievements are worth more, and a full board is the biggest
+// single prize of all.
+export const BINGO_BONUS = {
+  row: 3, // full horizontal row
+  col: 3, // full vertical column
+  diagonal: 5, // full diagonal (only two exist, so it's worth more)
+  fullBoard: 15, // every cell marked — the top prize
+} as const
+
+const ROWS = [0, 1, 2, 3].map((r) => [0, 1, 2, 3].map((c) => r * 4 + c))
+const COLS = [0, 1, 2, 3].map((c) => [0, 1, 2, 3].map((r) => r * 4 + c))
+const DIAGONALS = [
+  [0, 5, 10, 15],
+  [3, 6, 9, 12],
+]
+
+export interface BingoScore {
+  rows: number // number of complete rows
+  cols: number // number of complete columns
+  diagonals: number // number of complete diagonals
+  fullBoard: boolean
+  bonus: number // total bonus stars from lines + full board
+  lineCells: Set<number> // cell indices that belong to at least one complete line
+}
+
+// Score one card from the set of marked cell ids (`${cardId}-${index}`).
+export function bingoScore(cardId: string, marked: Set<string>): BingoScore {
+  const has = (i: number) => marked.has(`${cardId}-${i}`)
+  const lineCells = new Set<number>()
+  const scoreLines = (lines: number[][]) => {
+    let count = 0
+    for (const line of lines) {
+      if (line.every(has)) {
+        count++
+        line.forEach((i) => lineCells.add(i))
+      }
+    }
+    return count
+  }
+
+  const rows = scoreLines(ROWS)
+  const cols = scoreLines(COLS)
+  const diagonals = scoreLines(DIAGONALS)
+  const fullBoard = ROWS.flat().every(has)
+  const bonus =
+    rows * BINGO_BONUS.row +
+    cols * BINGO_BONUS.col +
+    diagonals * BINGO_BONUS.diagonal +
+    (fullBoard ? BINGO_BONUS.fullBoard : 0)
+
+  return { rows, cols, diagonals, fullBoard, bonus, lineCells }
+}
+
 export const BINGO_CARDS: BingoCard[] = [
   {
     id: 'norge',

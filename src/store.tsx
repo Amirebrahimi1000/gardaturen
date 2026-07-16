@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import { BUILTIN_TRIPS, tripCountries as resolveTripCountries } from './data/trips'
+import { bingoScore } from './data/bingo'
 import type { Trip } from './data/trips'
 import type { Country } from './data/countryDB'
 
@@ -246,9 +247,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
   const stars = useMemo(() => {
     const bingoCells = Object.values(progress.bingo).reduce((n, arr) => n + arr.length, 0)
+    const bingoBonus = Object.entries(progress.bingo).reduce(
+      (n, [cardId, cells]) => n + bingoScore(cardId, new Set(cells)).bonus,
+      0,
+    )
     const quizCorrect = Object.values(progress.quiz).filter(Boolean).length
     return (
       bingoCells * POINTS.bingoCell +
+      bingoBonus +
       quizCorrect * POINTS.quizCorrect +
       progress.countries.length * POINTS.country +
       progress.missions.length * POINTS.mission +
