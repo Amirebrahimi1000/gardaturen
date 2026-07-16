@@ -13,8 +13,8 @@ const PROMPTS = [
 ]
 
 // Build a readable text version of the whole journal, oldest entry first.
-function buildText(entries: JournalEntry[], name: string): string {
-  const who = name ? `${name} sin reise til Gardasjøen` : 'Reise til Gardasjøen'
+function buildText(entries: JournalEntry[], name: string, destination: string): string {
+  const who = name ? `${name} sin reise til ${destination}` : `Reise til ${destination}`
   const line = '='.repeat(40)
   const sep = '-'.repeat(40)
   const header = `Reisedagbok – Reisemester\n${who}\n${line}\n\n`
@@ -26,7 +26,7 @@ function buildText(entries: JournalEntry[], name: string): string {
 }
 
 export default function Journal() {
-  const { state, addJournal, deleteJournal, routeCountries } = useStore()
+  const { state, addJournal, deleteJournal, routeCountries, activeTrip } = useStore()
   const [open, setOpen] = useState(false)
   const [text, setText] = useState('')
   const [mood, setMood] = useState('😀')
@@ -43,13 +43,13 @@ export default function Journal() {
   }
 
   const exportFile = () => {
-    const blob = new Blob([buildText(state.journal, state.playerName)], {
+    const blob = new Blob([buildText(state.journal, state.playerName, activeTrip.to.name)], {
       type: 'text/plain;charset=utf-8',
     })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = 'reisedagbok-gardaturen.txt'
+    a.download = `reisedagbok-${activeTrip.id}.txt`
     document.body.appendChild(a)
     a.click()
     a.remove()
@@ -58,7 +58,7 @@ export default function Journal() {
 
   const copyAll = async () => {
     try {
-      await navigator.clipboard.writeText(buildText(state.journal, state.playerName))
+      await navigator.clipboard.writeText(buildText(state.journal, state.playerName, activeTrip.to.name))
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {

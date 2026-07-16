@@ -81,7 +81,7 @@ function Shell() {
         <div className="big-emoji">🚗🏔️</div>
         <h1>Reisemester</h1>
         <p style={{ color: '#fff', maxWidth: 320, fontWeight: 700 }}>
-          Reisespill for hele veien fra Skien til Gardasjøen! Hva heter du?
+          Spill og oppgaver for hele bilturen – uansett hvor dere skal! Hva heter du?
         </p>
         <input
           autoFocus

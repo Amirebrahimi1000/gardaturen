@@ -9,14 +9,14 @@ interface Q {
 }
 
 const POOL: Q[] = [
-  { q: 'Omtrent hvor mange km er hele kjøreturen fra Skien til Gardasjøen?', answer: 2000, unit: 'km' },
+  { q: 'Hvor høyt er Alpenes høyeste fjell, Mont Blanc?', answer: 4808, unit: 'm' },
   { q: 'Hvor høyt er Eiffeltårnet i Paris?', answer: 330, unit: 'm' },
   { q: 'Hvor lang er togtunnelen gjennom Gotthard i Sveits?', answer: 57, unit: 'km' },
   { q: 'Hvor mange øyer har Danmark omtrent?', answer: 400, unit: 'stk' },
   { q: 'Hvor høyt er Danmarks høyeste punkt?', answer: 171, unit: 'm' },
-  { q: 'Omtrent hvor mange timer tar hele kjøreturen (uten pauser)?', answer: 30, unit: 'timer' },
+  { q: 'Hvor mange land er medlemmer i EU?', answer: 27, unit: 'stk' },
   { q: 'Hvor lang er Gardasjøen fra nord til sør?', answer: 52, unit: 'km' },
-  { q: 'Hvor mange land kjører dere gjennom på hele turen?', answer: 9, unit: 'stk' },
+  { q: 'Hvor gammelt er Colosseum i Roma omtrent?', answer: 1950, unit: 'år' },
   { q: 'Hvor høyt er Sveits sitt berømte fjell Matterhorn?', answer: 4478, unit: 'm' },
   { q: 'Hvor mange innbyggere bor det i Luxembourg (hele landet)?', answer: 660000, unit: 'stk' },
   { q: 'Hvor gammelt er tårnet i Pisa omtrent?', answer: 850, unit: 'år' },

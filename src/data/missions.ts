@@ -21,7 +21,7 @@ export const MISSIONS: Mission[] = [
   { id: 'm-dyr', icon: '🐄', title: 'Dyrejakt', desc: 'Se en sau, en ku og en hest på samme dag.' },
   { id: 'm-bru', icon: '🌉', title: 'Broteller', desc: 'Tell hvor mange broer dere kjører over på én dag.' },
   { id: 'm-kart', icon: '🗺️', title: 'Kartleser', desc: 'Følg med på kartet og si ifra når dere krysser en landegrense.' },
-  { id: 'm-gardasjo', icon: '🏖️', title: 'Endelig framme!', desc: 'Dypp føttene i Gardasjøen når dere kommer fram.' },
+  { id: 'm-gardasjo', icon: '🏖️', title: 'Endelig framme!', desc: 'Feir at dere endelig er framme ved {destinasjon}!' },
   { id: 'm-tunnel', icon: '🕳️', title: 'Tunnel-teller', desc: 'Tell hvor mange tunneler dere kjører gjennom på én dag.' },
   { id: 'm-fransk', icon: '🥖', title: 'Snakk fransk', desc: 'Lær tre ord: bonjour (hei), merci (takk), au revoir (ha det).' },
   { id: 'm-italiensk2', icon: '🔢', title: 'Tell på italiensk', desc: 'Tell til fem: uno, due, tre, quattro, cinque.' },

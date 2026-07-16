@@ -2,7 +2,7 @@ import { MISSIONS } from '../data/missions'
 import { useStore } from '../store'
 
 export default function Missions() {
-  const { state, toggleMission } = useStore()
+  const { state, toggleMission, activeTrip } = useStore()
   const done = state.missions.length
 
   return (
@@ -23,7 +23,7 @@ export default function Missions() {
             <span className="ricon">{m.icon}</span>
             <span style={{ flex: 1 }}>
               <div className="rtitle">{m.title}</div>
-              <div className="rdesc">{m.desc}</div>
+              <div className="rdesc">{m.desc.replace('{destinasjon}', activeTrip.to.name)}</div>
             </span>
             <span className={`tickbox ${on ? 'on' : ''}`}>{on ? '✓' : ''}</span>
           </button>

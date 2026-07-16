@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Offline reise-app med spill og oppgaver for bilturen Skien - Gardasjoen",
+  "description": "Offline reise-app med spill og oppgaver for lange bilturer",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

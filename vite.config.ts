@@ -14,7 +14,7 @@ export default defineConfig({
       manifest: {
         name: 'Reisemester',
         short_name: 'Reisemester',
-        description: 'Reisespill og oppgaver for bilturen til Gardasjøen',
+        description: 'Spill og oppgaver for hele bilturen – uansett hvor dere skal.',
         lang: 'no',
         theme_color: '#0e7490',
         background_color: '#082f49',
